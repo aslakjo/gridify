@@ -14,7 +14,6 @@ module Gridify
     #   :page         page number (starts at 1) ["1"]
       
     def update_from_params( params )
-      params.symbolize_keys!
       params_to_rules params
       self.sort_by       = params[:sidx] if params[:sidx]
       self.sort_order    = params[:sord] if params[:sord]
