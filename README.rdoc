@@ -54,7 +54,7 @@ In the NotesController,
 
 In the app/views/notes/index.html.erb,
 
-  <%= @grid %>
+  <%= raw @grid %>
   <h1>Notes Grid<h1>
   <table id="notes_grid"></table>
   <div id="notes_grid_pager"></div> 
@@ -96,7 +96,7 @@ In the NotesController is same as Example 1 except returns json instead of xml (
 
 In the app/views/notes/index.html.erb is the same as Example 1, except uses "mylist" name
 
-  <%= @grid %>
+  <%= raw @grid %>
   <h1>My Notes List<h1>
   <table id="notes_mylist"></table>
   <div id="notes_mylist_pager"></div> 
@@ -219,7 +219,7 @@ In the NotesController is same as Example 1, with other actions
 
 In the app/views/notes/index.html.erb is the same as Example 1
 
-  <%= @grid %>
+  <%= raw @grid %>
   <h1>Notes Grid<h1>
   <table id="notes_grid"></table>
   <div id="notes_grid_pager"></div> 
