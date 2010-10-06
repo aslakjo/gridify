@@ -16,7 +16,7 @@ module Gridify
       options = args.extract_options! # => args.last.is_a?(Hash) ? args.pop : {}
       assert_exclusive_keys( options, :only, :except)
       
-      @resource = klass.to_s.tableize.pluralize
+      @resource = klass.to_s.tableize
       @name = args.first || :grid
       
       # non-persistent options
