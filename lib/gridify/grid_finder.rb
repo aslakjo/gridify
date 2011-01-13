@@ -53,7 +53,7 @@ module Gridify
       records = klass.send( finder, :all, find_args )
     end
     
-    def encode_records( records, total_count=nil )
+    def encode_records( records, total_count=nil, extra_attr = nil )
       #debugger
       klass = resource.classify.constantize
       total_count ||= klass.count
@@ -61,7 +61,7 @@ module Gridify
       #TODO: :only => [attributes], :methods => [virtual attributes]
       case data_type
       when :xml
-        xml = records.to_xml( :skip_types => true, :dasherize => false ) do |xml|
+        xml = records.to_xml( :skip_types => true, :methods => extra_attr, :dasherize => false ) do |xml|
           if rows_per_page > 0
             xml.page          current_page
             xml.total_pages   total_pages
