@@ -2,7 +2,8 @@ module Gridify
   class Grid
 
     attr_accessor :search_rules,        # current search/filter rules, as hash
-                  :search_rules_op      # :and, :or 
+                  :search_rules_op,     # :and, :or
+                  :scope                # can scope the inital dataset
     
     # finds records based on request params
     # e.g. params from jqGrid
@@ -19,6 +20,7 @@ module Gridify
       self.sort_order    = params[:sord] if params[:sord]
       self.current_page  = params[:page].to_i if params[:page]
       self.rows_per_page = params[:rows].to_i if params[:rows]
+      self.scope       = params[:scope] if params[:scope]
     end
 
     # return find args (scope) for current settings
@@ -39,6 +41,7 @@ module Gridify
       end
       cond = rules_to_conditions
       find_args[:conditions] = cond unless cond.blank?
+      find_args.merge!(:conditions => scope) unless scope.blank?
       find_args
     end
     
