@@ -101,9 +101,13 @@ module Gridify
       vals[:editable]   = true          if editable
       vals[:align]      = 'right'       if [:integer, :float, :currency].include?(value_type)
       case value_type
-      when :datetime
-        vals[:formatter] = 'date'
-        vals[:formatoptions] = { :srcformat => 'UniversalSortableDateTime', :newformat => 'FullDateTime' }
+        when :datetime
+          vals[:formatter] = 'date'
+          vals[:formatoptions] = { :srcformat => 'UniversalSortableDateTime', :newformat => 'FullDateTime' }
+
+        when :checkbox
+          vals[:formatter] = 'checkbox'
+          vals[:formatoptions] = { :disabled => true}
       end
       vals[:hidden]     = true          if hidden
       vals[:width]      = width         if width
